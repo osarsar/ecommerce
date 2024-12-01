@@ -2,20 +2,51 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
-    top: 400px;
+    width: 100%;
+    /* background-color: aqua; */
+}
+
+.contact_all .product_up{
+    background-color: black;
+    height: 500px;
+    width: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+}
+
+.contact_all .middle{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact_all .product_up img{
+    height: 500px;
 }
 
 .contact_all .contact1{
-    color: rgb(10, 0, 114);
-    border-bottom: 2px solid rgb(0, 0, 0);
-    padding-bottom: 0px;
+    color: rgb(0, 0, 0);
+    position: relative;
+    top: 100px;
+}
+
+.contact_all .frames{
+    width: 100%;
+    position: relative;
+    top: 200px;
 }
 
 .contact_all iframe{
-    width: 600px;
-    height: 500px;
+    width: 100%;
+    height: 450px;
+    border: none;
+    
 }
+
 
 .contact_all .box{
     display: flex;
@@ -28,40 +59,43 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    row-gap: 50px;   
+    row-gap: 20px;   
 }
 
 .contact_all .box .input input{
     padding-left: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
     border: 1px solid black;
+    padding-right: 350px;
 }
 
 .contact_all .box .input textarea{
-    padding-right: 200px;
+    padding-right: 400px;
     padding-left: 20px;
     padding-top: 20px;
-    padding-bottom: 70px;
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
+    padding-bottom: 150px;
     border: 1px solid black;
+    width: 1032px;
+    resize: none;
 }
 
 .contact_all .box .input button{
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
-    border: none;
-    background-color: rgb(10, 0, 114);
+    background-color: rgb(0, 0, 0);
     padding: 15px;
     color: aliceblue;
     cursor: pointer;
+    width: 200px;
+    border: none;
+}
+
+.contact_all .box .first_line{
+    display: flex;
+    column-gap: 10px;
 }
 
 .contact_all .box .input button:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: transform 0.3s ease;
 }
 

@@ -1,0 +1,74 @@
+.Project_all{
+    display: flex;
+    flex-direction: column;
+    row-gap: 100px;
+    position: relative;
+    top: 50px;
+    align-items: center;
+}
+
+.Project_all .title{
+    color: black;
+    font-size: 40px;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.Project_all .project{
+    display: flex;
+    row-gap: 100px;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 20px;
+    width: 80%;
+    justify-content: center;
+}
+
+.Project_all .project .box{
+    column-gap: 20px;
+    background-color: #f8f9fa;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    /* border-radius: 10px; */
+    row-gap: 50px;
+    /* box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3); */
+    color: rgb(0, 0, 0);
+    width: 400px;
+    height: 400px;
+}
+
+.Project_all .project img{
+    width: 150px;
+    height: 150px;
+    border-radius: 200rem;
+
+}
+
+.Project_all .project .box:hover{
+    color: rgb(0, 0, 0);
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.Project_all .project .box button{
+    /* background-color: #ffffff; */
+    /* padding: 10px 50px 10px 50px; */
+    /* border-radius: 5px; */
+    /* border: none; */
+    cursor: pointer;
+    /* box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3); */
+    /* border: 1px solid #000000; */
+}
+
+.Project_all .project .box button:hover{
+    background-color: #ffffff;
+    color: white;
+}

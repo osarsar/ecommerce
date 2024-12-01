@@ -39,7 +39,7 @@ function Navbar()
                 <a href="/Hassouni_Protrans/">Home</a>
                 <a href="/Hassouni_Protrans/#/Apropos">About</a>
                 <a href="/Hassouni_Protrans/#/Apropos">Shop</a>
-                <a onClick={() => handleScrollTo('contact1')}>Contact</a>
+                <a href="/Hassouni_Protrans/#/Contact">Contact</a>
             </ul>
             <div class="contact">
                 Login | Register

@@ -5,6 +5,7 @@ import Apropos from "./pages/Apropos";
 import Transport from "./pages/Transport";
 import { scroller } from 'react-scroll';
 import "./App.css";
+import Contacts from './pages/Contacts';
 
 function App() {
   const location = useLocation();
@@ -26,6 +27,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/Apropos" element={<Apropos />} />
       <Route path="/Transport" element={<Transport />} />
+      <Route path="/Contact" element={<Contacts />} />
     </Routes>
   );
 }
