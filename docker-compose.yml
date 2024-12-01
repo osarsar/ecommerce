@@ -1,0 +1,19 @@
+services:
+  react:
+    build: react
+    image: react-image
+    container_name: react-container
+    ports:
+      - "5173:5173"
+    volumes:
+      - react-volume:/home/frontend/src
+    command: bash -c "npm run dev -- --host 0.0.0.0 --port 5173"
+    restart: always
+
+volumes:
+  react-volume:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${PWD}/react/frontend
+      o: bind

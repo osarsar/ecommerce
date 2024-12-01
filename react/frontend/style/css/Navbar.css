@@ -1,0 +1,132 @@
+nav {
+    background-color: #f8f9fa;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    column-gap: 10px;
+    position: fixed;
+    z-index: 1000;
+}
+
+nav .logo{
+    position: relative;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+nav ul{
+    display: flex;
+    column-gap: 40px;
+    list-style: none;
+}
+
+nav ul .dropdown .list{
+    display: none;
+    position: absolute;
+    background-color: rgb(10, 0, 114);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+nav ul .dropdown:hover .list{
+    display: block;
+}
+
+nav ul a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+nav ul a:hover{
+    color: rgb(0, 0, 0);
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+nav .contact{
+    display: flex;
+    column-gap: 5px;
+}
+
+nav .contact img{
+    width: 40px;
+    height: 40px;
+}
+
+nav .contact img:hover{
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+nav .menu{
+    width: 50px;
+    display: none;
+    transition: all 0.5s;
+}
+
+@media screen and (max-width:1250px)  and (min-width:1050px){
+    nav ul a{
+        font-size: 15px;
+    }
+    nav .logo{
+        width: 60%;
+    }
+    nav .contact img{
+        width: 30px;
+        height: 30px;
+    }
+
+}
+
+@media screen and (max-width:1050px){
+    nav{
+        display: flex;
+        justify-content: space-between;
+    }
+    nav .menu{
+        display: block;
+    }
+
+    nav ul li a{
+        color: rgb(255, 255, 255);
+    }
+    nav .logo{
+        width: 70px;
+    }
+    nav .menu:hover{
+        cursor: pointer;
+    }
+    nav .contact{
+        display: none;
+    }
+
+    nav ul{
+        display: none;
+    }
+    nav ul.visible{
+        position: relative;
+        top: 50%;
+        right: 0;
+        background-color: rgb(10, 0, 114);
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: max-height 0.3s ease;
+        z-index: 2;
+        font-size: 10px;
+        border-radius: 0px 0px 0px 10px;
+        row-gap: 20px;
+    }
+
+    nav ul .dropdown .list a{
+        font-size: 15px;
+    }
+}
