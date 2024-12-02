@@ -3,6 +3,7 @@ import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Apropos from "./pages/Apropos";
 import Transport from "./pages/Transport";
+import Product_Details from "./pages/Product_Details";
 import { scroller } from 'react-scroll';
 import "./App.css";
 import Contacts from './pages/Contacts';
@@ -28,6 +29,7 @@ function App() {
       <Route path="/Apropos" element={<Apropos />} />
       <Route path="/Transport" element={<Transport />} />
       <Route path="/Contact" element={<Contacts />} />
+      <Route path="/Product_Details" element={<Product_Details />} />
     </Routes>
   );
 }

@@ -1,4 +1,4 @@
-.Apropos_all .product_up{
+.product_up{
     background-color: black;
     height: 500px;
     width: 100%;
@@ -9,6 +9,6 @@
     font-size: 50px;
 }
 
-.Apropos_all .product_up img{
+.product_up img{
     height: 500px;
 }

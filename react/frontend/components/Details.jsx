@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import PDFViewer from './PDFViewer'; // Assurez-vous d'avoir un composant PDFViewer
-import "../style/css/Projects.css"
+import "../style/css/Product_Details.css"
 // import docker from '../style/image/docker.png';
 // import awslogo from '../style/image/awslogo.png';
 // import windows from '../style/image/windows.png';
@@ -117,7 +117,7 @@ const projects = [
 
 
 
-function Shop() {
+function Details() {
   const navigate = useNavigate();
   const handleRedirect = () => {
     navigate('/Product_Details'); // Redirige vers la page spécifique du projet
@@ -126,16 +126,37 @@ function Shop() {
 //   const [selectedPDF, setSelectedPDF] = useState(null);
 
   return (
-    <div className="Project_all">
-      <div className="title">Products</div>
+    <div className="Product_Details_all">
+      <div className="title">Product Details</div>
       <div className="project">
-        {projects.map((project, index) => (
+        <div>
+            <img src={windows} alt="logo" className="project-image" />
+        </div>
+        <div className='right'>
+            <div className='ptitle'>
+            Hanging 4K Camera<br/>
+            <span>Price: $325.00</span>
+            </div>
+            <div className='p'>
+            Pursue pleasure rationally encounter consequences that are extremely painful. 
+            Nor again is there anyone who loves or pursues or desires to obtain pain of itself,
+            because it is pain, but because occasionally circles
+            Pursue pleasure rationally encounter consequences that are extremely painful. 
+            Nor again is there anyone who loves or pursues or desires to obtain pain of itself, 
+            because it is pain, but because occasionally circles occur in and pain can procure him 
+            some great ple cum solute nobie est eligendi option
+            </div>
+            <div className='buttom'>
+                ADD TO CART
+            </div>
+        </div>
+        {/* {projects.map((project, index) => (
           <div onClick={handleRedirect} className="box">           
           <img src={project.image} alt="logo" className="project-image" />
             <div className="text">Auto Clutch & Brake</div>
             <div className="text">Price: 1000$</div>
           </div>
-        ))}
+        ))} */}
       </div>
 
       {/* Affichage du PDF si sélectionné */}
@@ -146,4 +167,4 @@ function Shop() {
   );
 }
 
-export default Shop;
+export default Details;
