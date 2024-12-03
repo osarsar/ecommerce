@@ -7,6 +7,8 @@ import Product_Details from "./pages/Product_Details";
 import { scroller } from 'react-scroll';
 import "./App.css";
 import Contacts from './pages/Contacts';
+import Register from './pages/Register';
+import Login from './pages/Login';
 
 function App() {
   const location = useLocation();
@@ -30,6 +32,8 @@ function App() {
       <Route path="/Transport" element={<Transport />} />
       <Route path="/Contact" element={<Contacts />} />
       <Route path="/Product_Details/:id" element={<Product_Details />} />
+      <Route path="/Register" element={<Register />} />
+      <Route path="/Login" element={<Login />} />
     </Routes>
   );
 }

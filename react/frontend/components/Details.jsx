@@ -1,9 +1,24 @@
 import React, { useState } from 'react';
 import "../style/css/Product_Details.css"
 import { useNavigate} from 'react-router-dom';
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants"
+
 
 
 function Details({product}) {
+
+  const navigate = useNavigate();
+
+  const handleAddToCart = () => {
+    const token = localStorage.getItem(ACCESS_TOKEN);  // Vérifiez si le token est présent
+
+    if (!token) {
+      navigate('/Login');
+    } else {
+      console.log('Produit ajouté au panier');
+      navigate('/Apropos');
+    }
+  };
 
   return (
     <div className="Product_Details_all">
@@ -21,7 +36,7 @@ function Details({product}) {
             <div className='p'>
             {product.description}
             </div>
-            <div className='buttom'>
+            <div onClick={handleAddToCart} className='buttom'>
                 ADD TO CART
             </div>
         </div>
