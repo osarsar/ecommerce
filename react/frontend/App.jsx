@@ -9,6 +9,7 @@ import "./App.css";
 import Contacts from './pages/Contacts';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import Cart from './pages/Cart';
 
 function App() {
   const location = useLocation();
@@ -34,6 +35,7 @@ function App() {
       <Route path="/Product_Details/:id" element={<Product_Details />} />
       <Route path="/Register" element={<Register />} />
       <Route path="/Login" element={<Login />} />
+      <Route path="/Cart" element={<Cart />} />
     </Routes>
   );
 }

@@ -1,22 +1,33 @@
-import React, { useState } from 'react';
-import "../style/css/Product_Details.css"
-import { useNavigate} from 'react-router-dom';
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants"
+import React from 'react';
+import axios from 'axios'; // Ajout de l'importation d'axios
+import "../style/css/Product_Details.css";
+import { useNavigate } from 'react-router-dom';
+import { ACCESS_TOKEN } from "../constants";
 
-
-
-function Details({product}) {
-
+function Details({ product }) {
   const navigate = useNavigate();
 
-  const handleAddToCart = () => {
-    const token = localStorage.getItem(ACCESS_TOKEN);  // Vérifiez si le token est présent
+  const handleAddToCart = async (productId) => {
+    const token = localStorage.getItem(ACCESS_TOKEN);
 
     if (!token) {
-      navigate('/Login');
-    } else {
-      console.log('Produit ajouté au panier');
-      navigate('/Apropos');
+      navigate('/Login'); // Redirigez l'utilisateur vers la page de connexion
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        'http://localhost:8000/cart/add/', // URL de votre API
+        { product_id: productId }, // Données envoyées
+        {
+          headers: { Authorization: `Bearer ${token}` }, // Header d'authentification
+        }
+      );
+      console.log('Produit ajouté avec succès au panier', response.data);
+      alert('Produit ajouté au panier !'); // Notification de succès
+    } catch (error) {
+      console.error('Erreur lors de l\'ajout au panier :', error);
+      alert('Une erreur est survenue lors de l\'ajout au panier.');
     }
   };
 
@@ -25,20 +36,22 @@ function Details({product}) {
       <div className="title">Product Details</div>
       <div className="project">
         <div>
-              <img src={product.image} alt={product.name} className="project-image" />
-
+          <img src={product.image} alt={product.name} className="project-image" />
         </div>
-        <div className='right'>
-            <div className='ptitle'>
-            {product.name}<br/>
+        <div className="right">
+          <div className="ptitle">
+            {product.name}
+            <br />
             <span>Price: {product.price}$</span>
-            </div>
-            <div className='p'>
-            {product.description}
-            </div>
-            <div onClick={handleAddToCart} className='buttom'>
-                ADD TO CART
-            </div>
+          </div>
+          <div className="p">{product.description}</div>
+          <div
+            onClick={() => handleAddToCart(product.id)}
+            className="button"
+            style={{ cursor: 'pointer' }}
+          >
+            ADD TO CART
+          </div>
         </div>
       </div>
     </div>

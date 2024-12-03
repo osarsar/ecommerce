@@ -44,6 +44,7 @@ function Navbar()
             <div class="contact">
                 <a href="/Login">Login</a>|
                 <a href="/Register">Register</a>
+                <a href="/Cart">Cart</a>
             </div>
             <div className="menu" >
             <img className="menu" onClick={ShowMenu} src={menu} alt="flag"></img>

@@ -18,9 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 from pages.views import CreateUserView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from pages.views import ListeProduitsView, ProduitDetailView
+from pages.views import ListeProduitsView, ProduitDetailView, AddToCartView, ViewCartAPIView
 from django.conf import settings
 from django.conf.urls.static import static
+from pages import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,7 +31,8 @@ urlpatterns = [
     path("api-auth/", include("rest_framework.urls")),
     path('produits/', ListeProduitsView.as_view(), name='liste_produits'),
     path('produits/<int:id>/', ProduitDetailView.as_view(), name='produit_detail'),
-
+    path('cart/add/', AddToCartView.as_view(), name='add_to_cart'),
+    path('cart/view/', ViewCartAPIView.as_view(), name='view-cart'),
 
 ]
 if settings.DEBUG:

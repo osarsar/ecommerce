@@ -42,14 +42,6 @@ export default function Product_Details()
         <div className="product_up">
             <img src={up} alt="flag"></img>
         </div>
-        {/* <div className="product-details">
-      <h1>{produit.name}</h1>
-      <img src={produit.image} alt={produit.name} className="product-image" />
-      <p>{produit.description}</p>
-      <p>Price: {produit.price}$</p>
-      <p>Stock: {produit.stock}</p>
-      <p>Category: {produit.categorie}</p>
-    </div> */}
         <Details product={produit}/>
         </div>);
 };
