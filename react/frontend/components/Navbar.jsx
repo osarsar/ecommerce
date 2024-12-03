@@ -32,14 +32,14 @@ function Navbar()
     return (
         <nav>
             <div>
-            {/* <a href="/Hassouni_Protrans/"><img className="logo" src={logo} alt="logo"></img></a> */}
+            {/* <a href="/"><img className="logo" src={logo} alt="logo"></img></a> */}
                 Ecommerce
             </div>
             <ul id="MenuList">
-                <a href="/Hassouni_Protrans/">Home</a>
-                <a href="/Hassouni_Protrans/#/Apropos">About</a>
-                <a href="/Hassouni_Protrans/#/Apropos">Shop</a>
-                <a href="/Hassouni_Protrans/#/Contact">Contact</a>
+                <a href="/">Home</a>
+                <a href="/Apropos">About</a>
+                <a href="/Apropos">Shop</a>
+                <a href="/Contact">Contact</a>
             </ul>
             <div class="contact">
                 Login | Register

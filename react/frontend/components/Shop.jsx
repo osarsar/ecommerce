@@ -1,127 +1,29 @@
-import React, { useState } from 'react';
-// import PDFViewer from './PDFViewer'; // Assurez-vous d'avoir un composant PDFViewer
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import "../style/css/Projects.css"
-// import docker from '../style/image/docker.png';
-// import awslogo from '../style/image/awslogo.png';
-// import windows from '../style/image/windows.png';
-// import ml from '../style/image/ml.png';
-// import net from '../style/image/net.png';
-// import web from '../style/image/web.png';
-
-// Importation des fichiers PDF
-import ml from "../style/image/p1.jpeg";
-import windows from "../style/image/p2.jpeg";
-import net from "../style/image/p4.jpeg";
-import web from "../style/image/p3.jpeg";
 import { useNavigate} from 'react-router-dom';
 
-
-const projects = [
-  {
-    // image: docker,
-    image: ml,
-    title: 'Containerized WordPress with Nginx, MariaDB, and SSL',
-    // pdf: dockerProjectPDF,
-  },
-  {
-    // image: awslogo,
-    image: windows,
-    title: 'Containerized WordPress on AWS with WAF, OWASP, and HTTPS',
-    // pdf: awsProjectPDF,
-  },
-  {
-    image: windows,
-    title: 'Securing Active Directory Infrastructure and Simulation of Attacks with GNS3',
-    // pdf: windowsProjectPDF,
-  },
-  {
-    image: ml,
-    title: 'Predictive Maintenance Powered By Machine Learning',
-    // pdf: mlProjectPDF,
-  },
-  {
-    image: net,
-    title: 'Network Security with Advanced Threat Protection',
-    // pdf: netProjectPDF,
-  },
-  {
-    image: web,
-    title: 'Securing Web Applications with WAF, JWT, HTTPS, and GDPR Compliance',
-    // pdf: webProjectPDF,
-  },
-  {
-    // image: docker,
-    image: ml,
-    title: 'Containerized WordPress with Nginx, MariaDB, and SSL',
-    // pdf: dockerProjectPDF,
-  },
-  {
-    // image: awslogo,
-    image: windows,
-    title: 'Containerized WordPress on AWS with WAF, OWASP, and HTTPS',
-    // pdf: awsProjectPDF,
-  },
-  {
-    image: windows,
-    title: 'Securing Active Directory Infrastructure and Simulation of Attacks with GNS3',
-    // pdf: windowsProjectPDF,
-  },
-  {
-    image: ml,
-    title: 'Predictive Maintenance Powered By Machine Learning',
-    // pdf: mlProjectPDF,
-  },
-  {
-    image: net,
-    title: 'Network Security with Advanced Threat Protection',
-    // pdf: netProjectPDF,
-  },
-  {
-    image: web,
-    title: 'Securing Web Applications with WAF, JWT, HTTPS, and GDPR Compliance',
-    // pdf: webProjectPDF,
-  },
-  {
-    // image: docker,
-    image: ml,
-    title: 'Containerized WordPress with Nginx, MariaDB, and SSL',
-    // pdf: dockerProjectPDF,
-  },
-  {
-    // image: awslogo,
-    image: windows,
-    title: 'Containerized WordPress on AWS with WAF, OWASP, and HTTPS',
-    // pdf: awsProjectPDF,
-  },
-  {
-    image: windows,
-    title: 'Securing Active Directory Infrastructure and Simulation of Attacks with GNS3',
-    // pdf: windowsProjectPDF,
-  },
-  {
-    image: ml,
-    title: 'Predictive Maintenance Powered By Machine Learning',
-    // pdf: mlProjectPDF,
-  },
-  {
-    image: net,
-    title: 'Network Security with Advanced Threat Protection',
-    // pdf: netProjectPDF,
-  },
-  {
-    image: web,
-    title: 'Securing Web Applications with WAF, JWT, HTTPS, and GDPR Compliance',
-    // pdf: webProjectPDF,
-  },
-];
 
 
 
 function Shop() {
+  const [produits, setProduits] = useState([]);
   const navigate = useNavigate();
-  const handleRedirect = () => {
-    navigate('/Product_Details'); // Redirige vers la page spécifique du projet
+
+  const handleRedirect = (id) => {
+    navigate(`/Product_Details/${id}`); // Redirige vers la page spécifique du projet
   };
+
+  useEffect(() => {
+    // Récupérer la liste des produits depuis l'API
+    axios.get('http://localhost:8000/produits/')
+      .then((response) => {
+        setProduits(response.data);
+      })
+      .catch((error) => {
+        console.error("Erreur lors du chargement des produits:", error);
+      });
+  }, []);
 
 //   const [selectedPDF, setSelectedPDF] = useState(null);
 
@@ -129,19 +31,18 @@ function Shop() {
     <div className="Project_all">
       <div className="title">Products</div>
       <div className="project">
-        {projects.map((project, index) => (
-          <div onClick={handleRedirect} className="box">           
-          <img src={project.image} alt="logo" className="project-image" />
-            <div className="text">Auto Clutch & Brake</div>
-            <div className="text">Price: 1000$</div>
+      {produits.map((produit) => (
+          <div
+            key={produit.id}
+            className="box"
+            onClick={() => handleRedirect(produit.id)}
+          >
+            <img src={produit.image} alt={produit.name} className="project-image" />
+            <div className="text">{produit.name}</div>
+            <div className="text">Price: {produit.price}$</div>
           </div>
         ))}
       </div>
-
-      {/* Affichage du PDF si sélectionné */}
-      {/* {selectedPDF && (
-        <PDFViewer pdf={selectedPDF} onClose={() => setSelectedPDF(null)} />
-      )} */}
     </div>
   );
 }

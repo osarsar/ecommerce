@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"; // Remplace HashRouter par BrowserRouter
 import Home from "./pages/Home";
 import Apropos from "./pages/Apropos";
 import Transport from "./pages/Transport";
@@ -29,15 +29,15 @@ function App() {
       <Route path="/Apropos" element={<Apropos />} />
       <Route path="/Transport" element={<Transport />} />
       <Route path="/Contact" element={<Contacts />} />
-      <Route path="/Product_Details" element={<Product_Details />} />
+      <Route path="/Product_Details/:id" element={<Product_Details />} />
     </Routes>
   );
 }
 
 export default function Root() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <App />
-    </HashRouter>
+    </BrowserRouter>
   );
 }
