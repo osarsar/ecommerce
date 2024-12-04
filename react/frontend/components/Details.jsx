@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios'; // Ajout de l'importation d'axios
+import api from '../api'; // Ajout de l'importation d'api
 import "../style/css/Product_Details.css";
 import { useNavigate } from 'react-router-dom';
 import { ACCESS_TOKEN } from "../constants";
@@ -16,7 +16,7 @@ function Details({ product }) {
     }
 
     try {
-      const response = await axios.post(
+      const response = await api.post(
         'http://localhost:8000/cart/add/', // URL de votre API
         { product_id: productId }, // Données envoyées
         {
@@ -47,7 +47,7 @@ function Details({ product }) {
           <div className="p">{product.description}</div>
           <div
             onClick={() => handleAddToCart(product.id)}
-            className="button"
+            className="buttom"
             style={{ cursor: 'pointer' }}
           >
             ADD TO CART

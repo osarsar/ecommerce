@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { useNavigate } from "react-router-dom";
 // import "../style/Register.css";
 // import LoadingIndicator from "../components/LoadingIndicator";
@@ -84,7 +84,7 @@ function Register() {
     setLoading(true);
     e.preventDefault();
     try {
-      const res = await axios.post(`http://${window.location.hostname}:8000/api/user/register/`, { username, password, email });
+      const res = await api.post(`http://${window.location.hostname}:8000/api/user/register/`, { username, password, email });
       // toast.success("Registration success!");
       setTimeout(() => {
         handleSignInClick();

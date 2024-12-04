@@ -11,9 +11,7 @@ import up from "../style/image/up1.jpeg"
 import "../style/css/Apropos.css"
 import { useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-
-
+import api from '../api';
 
 
 export default function Product_Details()
@@ -23,7 +21,7 @@ export default function Product_Details()
 
     useEffect(() => {
         // Récupérer les détails du produit depuis l'API
-        axios.get(`http://localhost:8000/produits/${id}/`)  // Assurez-vous que l'API prend l'ID en paramètre
+        api.get(`http://localhost:8000/produits/${id}/`)  // Assurez-vous que l'API prend l'ID en paramètre
           .then((response) => {
             setProduit(response.data);
           })

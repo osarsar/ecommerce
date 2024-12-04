@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../api';
 import "../style/css/Projects.css"
 import { useNavigate} from 'react-router-dom';
 
@@ -16,7 +16,7 @@ function Shop() {
 
   useEffect(() => {
     // Récupérer la liste des produits depuis l'API
-    axios.get('http://localhost:8000/produits/')
+    api.get('http://localhost:8000/produits/')
       .then((response) => {
         setProduits(response.data);
       })

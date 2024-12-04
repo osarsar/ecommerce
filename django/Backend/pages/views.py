@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from django.views import View
 from rest_framework.decorators import api_view
 from rest_framework import status
+# from django.contrib.auth.tokens import RefreshToken
 
 
 
@@ -67,8 +68,7 @@ class ProduitDetailView(View):
 
 
 class AddToCartView(APIView):
-    # permission_classes = [IsAuthenticated]  # Activez cette permission si nécessaire
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]  # Activez cette permission si nécessaire
 
     def post(self, request):
         user = request.user
@@ -92,7 +92,7 @@ class AddToCartView(APIView):
 
 
 class ViewCartAPIView(APIView):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated] 
     
 
     def get(self, request):
@@ -121,3 +121,58 @@ class ViewCartAPIView(APIView):
         ]
 
         return Response(cart_data, status=status.HTTP_200_OK)
+
+
+
+class RemoveFromCartView(APIView):
+    permission_classes = [IsAuthenticated]   # Enable authentication if necessary
+
+    def delete(self, request, cart_item_id):
+        try:
+            # Get the cart item to delete
+            cart_item = CartItem.objects.get(id=cart_item_id, cart__user=request.user)
+        except CartItem.DoesNotExist:
+            return Response({"error": "L'élément du panier est introuvable."}, status=status.HTTP_404_NOT_FOUND)
+
+        # Delete the item from the cart
+        cart_item.delete()
+
+        return Response({"message": "Produit supprimé du panier avec succès."}, status=status.HTTP_204_NO_CONTENT)
+
+
+
+# class LogoutView(APIView):
+#     permission_classes = [AllowAny]
+
+#     def post(self, request):
+#         refresh_token = request.data.get('refresh_token')
+
+#         if refresh_token:
+#             try:
+#                 # Désactiver le refresh token
+#                 token = RefreshToken(refresh_token)
+#                 token.blacklist()
+#                 return Response({"message": "Logged out successfully."}, status=status.HTTP_200_OK)
+#             except Exception as e:
+#                 return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+#         else:
+#             return Response({"error": "No refresh token provided."}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+class LogoutView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        refresh_token = request.data.get('refresh_token')
+
+        if refresh_token:
+            try:
+                # Désactiver le refresh token
+                token = RefreshToken(refresh_token)
+                token.blacklist()  # Invalider le refresh token
+                return Response({"message": "Logged out successfully."}, status=status.HTTP_200_OK)
+            except Exception as e:
+                return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response({"error": "No refresh token provided."}, status=status.HTTP_400_BAD_REQUEST)

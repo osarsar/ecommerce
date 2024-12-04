@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from pages.views import CreateUserView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from pages.views import ListeProduitsView, ProduitDetailView, AddToCartView, ViewCartAPIView
+from pages.views import ListeProduitsView, ProduitDetailView, AddToCartView, ViewCartAPIView, RemoveFromCartView, LogoutView
 from django.conf import settings
 from django.conf.urls.static import static
 from pages import views
@@ -33,6 +33,8 @@ urlpatterns = [
     path('produits/<int:id>/', ProduitDetailView.as_view(), name='produit_detail'),
     path('cart/add/', AddToCartView.as_view(), name='add_to_cart'),
     path('cart/view/', ViewCartAPIView.as_view(), name='view-cart'),
+    path('api/cart/remove/<int:cart_item_id>/', RemoveFromCartView.as_view(), name='remove_from_cart'),
+    path('api/logout/', LogoutView.as_view(), name='logout'),
 
 ]
 if settings.DEBUG:

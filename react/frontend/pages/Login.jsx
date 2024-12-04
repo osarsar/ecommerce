@@ -1,5 +1,5 @@
 import { useState } from "react"
-import axios from "axios";
+import api from "../api";
 import { Navigate, useNavigate } from "react-router-dom"
 // import "../style/Login.css"
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants"
@@ -44,7 +44,7 @@ function Login() {
     setLoading(true);
     e.preventDefault();
     try {
-      const res = await axios.post(`http://${window.location.hostname}:8000/api/token/`, {username, password});
+      const res = await api.post(`http://${window.location.hostname}:8000/api/token/`, {username, password});
       localStorage.setItem(ACCESS_TOKEN, res.data.access);
       localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
         navigate("/");
