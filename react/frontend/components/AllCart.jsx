@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ACCESS_TOKEN } from "../constants";
-// import "../style/css/Cart.css";  // Assurez-vous d'avoir un fichier CSS pour styliser le panier
+import "../style/css/Cart.css";  // Assurez-vous d'avoir un fichier CSS pour styliser le panier
 
 function AllCart() {
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [imageError, setImageError] = useState(false); // Pour gérer l'erreur d'image
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,8 +23,8 @@ function AllCart() {
       try {
         const response = await axios.get('http://localhost:8000/cart/view/', {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         });
         setCartItems(response.data);
         setLoading(false);
@@ -36,11 +37,6 @@ function AllCart() {
     fetchCart();
   }, [navigate]);
 
-  const calculateTotal = () => {
-    return cartItems.reduce((total, item) => total + item.total, 0);
-  };
-  const total = calculateTotal();
-
   if (loading) {
     return <div>Chargement...</div>;
   }
@@ -49,30 +45,59 @@ function AllCart() {
     return <div>{error}</div>;
   }
 
+  const handleImageError = () => {
+    setImageError(true); // Changer l'image si erreur
+  };
+
+  // Calcul du total final du panier
+  const calculateTotal = () => {
+    return cartItems.reduce((total, item) => total + item.total, 0);
+  };
+
+  const total = calculateTotal();
+
   return (
     <div className="cart-container">
-      <h1>Your Cart</h1>
-      {cartItems.length === 0 ? (
-        <p>Your cart is empty</p>
-      ) : (
-        <div className="cart-items">
-          {cartItems.map((item) => (
-            <div key={item.product_id} className="cart-item">
-              <img src={item.image} alt={item.name} className="cart-item-image" />
-              <div className="cart-item-details">
-                <h3>{item.name}</h3>
-                <p>Price: ${item.price}</p>
-                <p>Quantity: {item.quantity}</p>
-                <p>Total: ${item.total}</p>
-              </div>
-            </div>
-          ))}
+        <div className='table'>
+            <h1 className='title'>Shopping Cart</h1>
+            {cartItems.length === 0 ? (
+                <p>Your cart is empty</p>
+                ) : (
+            <table className="cart-table">
+            <thead>
+                <tr>
+                <th>PRODUCTS</th>
+                <th>PRICE</th>
+                <th>QUANTITY</th>
+                <th>TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {cartItems.map((item) => (
+                    <tr key={item.product_id} className="cart-item">
+                    <td className='product'>
+                    <img
+                        src={imageError ? '/path/to/fallback-image.jpg' : item.image}
+                        alt={item.name}
+                        className="cart-item-image"
+                        onError={handleImageError}
+                        />
+                    {item.name}
+                    </td>
+                    <td>${item.price.toFixed(2)}</td>
+                    <td>{item.quantity}</td>
+                    <td>${item.total.toFixed(2)}</td>
+                </tr>
+                ))}
+            </tbody>
+            </table>
+            )}
         </div>
-      )}
-       <h3>Total: {total.toFixed(2)}$</h3>
-      <div className="cart-footer">
-        <button onClick={() => navigate('/Checkout')}>Proceed to Checkout</button>
-      </div>
+        <div className="cart-footer">
+            <h3>Total: ${total.toFixed(2)}</h3> {/* Affichage du total final avec deux décimales */}
+            <button onClick={() => navigate('/Checkout')}>PROCEED TO CHECKOUT</button>
+        </div>
+
     </div>
   );
 }
