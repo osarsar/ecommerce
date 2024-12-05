@@ -1,7 +1,7 @@
 import { useState } from "react"
 import api from "../api";
 import { Navigate, useNavigate } from "react-router-dom"
-// import "../style/Login.css"
+import "../style/css/Login.css"
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants"
 // import LoadingIndicator from "../components/LoadingIndicator"
 // import { ToastContainer, toast } from 'react-toastify';
@@ -21,8 +21,7 @@ function Login() {
   const [showLogin, setShowLogin] = useState(true);
 
   const handleSignOutClick = () => {
-    setShowLogin(false);
-    setShowRegister(true);
+    navigate("/Register")
   };
 
   const handleSubmit = async (e) => {
@@ -50,7 +49,7 @@ function Login() {
         navigate("/");
     } catch (error) {
     //   toast.error("Username or Password incorrect. Please try again.");
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
@@ -64,11 +63,10 @@ function Login() {
       <div>
           <div className="blockl_all">
             <div className="block">
-              <h1 className="create">Login to your account</h1>
+              <h1 className="create">Login</h1>
               <div className="container">
                 <div className="high">
                   <div className="pair">
-                    <h4 className="username">Username</h4>
                     <input
                       className={`username ${usernameError ? 'input-error' : ''}`}
                       type="username"
@@ -79,7 +77,6 @@ function Login() {
                     ></input>
                   </div>
                   <div className="pair">
-                    <h4>Password</h4>
                     <input
                       className={`password ${passwordError ? 'input-error' : ''}`}
                       type="password"
@@ -102,6 +99,9 @@ function Login() {
                     <div className="sign">
                       <h4>Don't have an account?</h4>
                     </div>
+                    <h4>
+                    <button onClick={handleSignOutClick}>Sign up</button>
+                  </h4>
                   </div>
                 </div>
               </div>

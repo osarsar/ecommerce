@@ -7,8 +7,8 @@ import Product_Details from "./pages/Product_Details";
 import { scroller } from 'react-scroll';
 import "./App.css";
 import Contacts from './pages/Contacts';
-import Register from './pages/Register';
-import Login from './pages/Login';
+import Registers from './pages/Registers';
+import Logins from './pages/Logins';
 import Cart from './pages/Cart';
 import ProtectedRoute from './ProtectedRoute';
 
@@ -34,8 +34,8 @@ function App() {
       <Route path="/Transport" element={<Transport />} />
       <Route path="/Contact" element={<Contacts />} />
       <Route path="/Product_Details/:id" element={<Product_Details />} />
-      <Route path="/Register" element={<Register />} />
-      <Route path="/Login" element={<Login />} />
+      <Route path="/Register" element={<Registers />} />
+      <Route path="/Login" element={<Logins />} />
       <Route path="/Cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
     </Routes>
   );

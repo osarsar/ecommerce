@@ -130,7 +130,7 @@ class RemoveFromCartView(APIView):
     def delete(self, request, cart_item_id):
         try:
             # Get the cart item to delete
-            cart_item = CartItem.objects.get(id=cart_item_id, cart__user=request.user)
+            cart_item = CartItem.objects.get(product_id=cart_item_id, cart__user=request.user)
         except CartItem.DoesNotExist:
             return Response({"error": "L'élément du panier est introuvable."}, status=status.HTTP_404_NOT_FOUND)
 
@@ -138,26 +138,6 @@ class RemoveFromCartView(APIView):
         cart_item.delete()
 
         return Response({"message": "Produit supprimé du panier avec succès."}, status=status.HTTP_204_NO_CONTENT)
-
-
-
-# class LogoutView(APIView):
-#     permission_classes = [AllowAny]
-
-#     def post(self, request):
-#         refresh_token = request.data.get('refresh_token')
-
-#         if refresh_token:
-#             try:
-#                 # Désactiver le refresh token
-#                 token = RefreshToken(refresh_token)
-#                 token.blacklist()
-#                 return Response({"message": "Logged out successfully."}, status=status.HTTP_200_OK)
-#             except Exception as e:
-#                 return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
-#         else:
-#             return Response({"error": "No refresh token provided."}, status=status.HTTP_400_BAD_REQUEST)
-
 
 
 class LogoutView(APIView):

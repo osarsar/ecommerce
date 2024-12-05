@@ -30,11 +30,7 @@ export default function Contact() {
     };
 
     return (
-        <div className="contact_all">   
-            <div className="product_up">           
-                <img src={up} alt="flag"></img>
-            </div>
-            
+        <div className="contact_all">            
             <div className='middle'>
                 <h1 className="contact1">Contact</h1>
                 <br /><br />

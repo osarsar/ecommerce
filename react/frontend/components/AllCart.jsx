@@ -70,10 +70,10 @@ function AllCart() {
           Authorization: `Bearer ${token}`,
         },
       });
-      setCartItems(cartItems.filter(item => item.id !== cartItemId));  // Remove item from the local state
+      // setCartItems(cartItems.filter(item => item.id !== cartItemId));  // Remove item from the local state
       alert("product removed")
     } catch (error) {
-      setError('Error removing product from cart');
+      setError('Error removing productss from cart');
     }
   };
 

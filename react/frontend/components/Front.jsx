@@ -22,14 +22,7 @@ const handleScrollTo = (section) => {
     </div>
     <div className="title">
         <div>Your Ultimate Online Store </div>
-        <div className="p">or High-Quality Car Parts and Accessories</div>
+        <div className="p">High-Quality Car Parts and Accessories</div>
     </div>
-        {/* <div className="box">
-            <div className="name"> - HassouniProtrans
-                <div className="transport">Transport de Marchandise <br></br> National & International</div>
-            </div>
-                <a onClick={() => handleScrollTo('contact1')}><button className="contactus">Contact Us</button></a> */}
-                
-        {/* </div> */}
    </div>)
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
-// import "../style/Register.css";
+import "../style/css/Register.css";
 // import LoadingIndicator from "../components/LoadingIndicator";
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -19,10 +19,11 @@ function Register() {
   const [confirmpasswordError, setConfirmPasswordError] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(true);
+  const navigate = useNavigate();
+
 
   const handleSignInClick = () => {
-    setShowRegister(false);
-    setShowLogin(true);
+    navigate("/Login")
   };
 
   const isStrongPassword = (password) => {
@@ -125,7 +126,6 @@ function Register() {
             <div className="container">
               <div className="high">
                 <div className="pair">
-                  <h4 className="username">Name</h4>
                   <input
                     className={`username ${usernameError ? 'input-error' : ''}`}
                     type="text"
@@ -136,7 +136,6 @@ function Register() {
                   />
                 </div>
                 <div className="pair">
-                  <h4 className="username">Email</h4>
                   <input
                     className={`email ${emailError ? 'input-error' : ''}`}
                     type="email"
@@ -147,7 +146,6 @@ function Register() {
                   />
                 </div>
                 <div className="pair">
-                  <h4>Password</h4>
                   <input
                     className={`password ${passwordError ? 'input-error' : ''}`}
                     type="password"
@@ -158,7 +156,6 @@ function Register() {
                   />
                 </div>
                 <div className="pair">
-                  <h4>Confirm Password</h4>
                   <input
                     className={`password ${confirmpasswordError ? 'input-error' : ''}`}
                     type="password"
@@ -175,7 +172,7 @@ function Register() {
                     <h4>Register</h4>
                   </button>
                 </h4>
-                {loading && <LoadingIndicator />}
+                {/* {loading && <LoadingIndicator />} */}
                 <div className="too_low">
                   <h4>Already have an account?</h4>
                   <h4>
