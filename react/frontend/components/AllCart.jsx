@@ -93,13 +93,13 @@ function AllCart() {
                 <th>PRICE</th>
                 <th>QUANTITY</th>
                 <th>TOTAL</th>
-                <th>REMOVE</th> {/* Add a column for the remove button */}
               </tr>
             </thead>
             <tbody>
               {cartItems.map((item) => (
                 <tr key={item.product_id} className="cart-item">
                   <td className='product'>
+                    <button onClick={() => removeFromCart(item.product_id)}>Remove</button>
                     <img
                       src={imageError ? '/path/to/fallback-image.jpg' : item.image}
                       alt={item.name}
@@ -111,9 +111,6 @@ function AllCart() {
                   <td>${item.price.toFixed(2)}</td>
                   <td>{item.quantity}</td>
                   <td>${item.total.toFixed(2)}</td>
-                  <td>
-                    <button onClick={() => removeFromCart(item.product_id)}>Remove</button> {/* Remove button */}
-                  </td>
                 </tr>
               ))}
             </tbody>

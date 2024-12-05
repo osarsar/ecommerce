@@ -102,55 +102,74 @@
     transition: font-size 0.3s ease;
 }
 
-@media screen and (max-width:1250px)  and (min-width:1050px){
-
-    .box .name{
-        font-size: 20px;
-        transform: translateX(10%);
-    }
-}
-
-@media screen and (max-width:1050px){
-
-    .box .name{
-        font-size: 20px;
-        transform: translateX(10%);
-    }
-
-    .full .contactus{
-        font-size: 15px;
-    }
-}
-
-@media screen and (max-width:700px){
-
+@media screen and (max-width:1050px) and (min-width:320px){
     .full{
-        height: auto;
-        position: relative;
-        z-index: 1;
-        top: 100px;
-    }
-
-    .full .box{
-        background-color: rgb(10, 0, 114);
-        padding-bottom: 20px;
-        padding-top: 20px;
+        height: 404px;
     }
     
-    .full img{
-        transform: translateX(-50%);
+    .full .title{
+        font-size: 28px;
+        bottom: 0px;
+    }
+    .full .title .p{
+        font-size: 12px;  
+    }
+    .full .down{
+        width: 90px;
+        height: 150px;
+        border: 2px solid white;
+        border-radius: 10px;
+        box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+    }
+    .full .up{
+        width: 90px;
+        height: 150px;
+        border: 2px solid white;
+        border-radius: 10px;
+        box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+        position: relative;
+        bottom: 40px;
+    }
+    .full .all_img{
+        column-gap: 3px;
+        top: 320px;
     }
 
-    .box .name{
-        font-size: 12px;
-    }
-
-    .full .contactus{
-        font-size: 9px;
-        padding: 10px 20px 10px 20px;
-        border-radius: 6px;
-    }
-    .full .contactus:hover{
-        font-size: 10px;
-    }
 }
+
+
+@media screen and (max-width:320px){
+    .full{
+        height: 304px;
+    }
+    
+    .full .title{
+        font-size: 20px;
+        bottom: 0px;
+    }
+    .full .title .p{
+        font-size: 11px;  
+    }
+    .full .down{
+        width: 70px;
+        height: 124px;
+        border: 2px solid white;
+        border-radius: 10px;
+        box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+    }
+    .full .up{
+        width: 70px;
+        height: 124px;
+        border: 2px solid white;
+        border-radius: 10px;
+        box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+        position: relative;
+        /* bottom: 40px; */
+    }
+    .full .all_img{
+        column-gap: 3px;
+        top: 250px;
+    }
+
+}
+

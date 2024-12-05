@@ -1,6 +1,7 @@
 import "../style/css/Navbar.css"
 import React , {useState} from 'react'
-import logo from "../style/image/logo.png"
+import cart from "../style/image/cart.png"
+import logo from "../style/image/AutoCyberSec.png"
 import facebook from "../style/image/facebook.png"
 import instagram from "../style/image/instagram.png"
 import linkedin from "../style/image/linkedin.png"
@@ -32,9 +33,9 @@ function Navbar()
 
     return (
         <nav>
-            <div>
-            {/* <a href="/"><img className="logo" src={logo} alt="logo"></img></a> */}
-                Ecommerce
+            <div className="all_logo">
+            <a href="/"><img className="logo" src={logo} alt="logo"></img></a>
+            <div>ACS</div>
             </div>
             <ul id="MenuList">
                 <a href="/">Home</a>
@@ -42,11 +43,17 @@ function Navbar()
                 <a href="/Apropos">Shop</a>
                 <a href="/Contact">Contact</a>
             </ul>
-            <div class="contact">
-                <a href="/Login">Login</a>|
-                <a href="/Register">Register</a>
-                <a href="/Cart">Cart</a>
-                <Logout/>
+            <div className="right">
+
+                <div class="contact">
+                    <div><a href="/Login">Login</a></div>
+                    <div>|</div>
+                    <div><a href="/Register">Register</a></div>
+                </div>
+            <div>
+                 <a href="/Cart"><img className="cart" src={cart} alt="logo"></img></a>
+                {/* <Logout/> */}
+            </div>
             </div>
             <div className="menu" >
             <img className="menu" onClick={ShowMenu} src={menu} alt="flag"></img>
